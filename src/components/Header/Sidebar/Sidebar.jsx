@@ -1,18 +1,34 @@
 import { Input, Drawer } from "antd";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import { Continents } from "../../Continents/Continents";
+import { countryPhotos } from "../../../store/CountryPhotos";
+
+import { Context } from "../../../store/Context";
 
 const { Search } = Input;
 
 export const Sidebar = () => {
+  const { setCurrent, setMainTitle } = useContext(Context);
+
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
     setOpen(!open);
   };
 
-  const onSearch = (value) => console.log(value);
+  const { getImg } = countryPhotos;
+
+  const onSearch = (value) => {
+    getImg({ query: value, urlPage: 1 });
+    setCurrent(1);
+  };
+
+  const onChange = (searchCountry) => {
+    getImg({ query: searchCountry, urlPage: 1 });
+    setMainTitle(searchCountry);
+    setCurrent(1);
+  };
 
   return (
     <div>
@@ -34,7 +50,7 @@ export const Sidebar = () => {
           style={{ marginBottom: "10px" }}
         />
 
-        <Continents />
+        <Continents onChange={onChange} />
       </Drawer>
     </div>
   );

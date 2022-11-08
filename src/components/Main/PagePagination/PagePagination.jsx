@@ -1,9 +1,21 @@
 import { Pagination } from "antd";
-import React, { useState } from "react";
-export const PagePagination = () => {
-  const [current, setCurrent] = useState(3);
+import React, { useEffect, useContext } from "react";
+import { countryPhotos } from "../../../store/CountryPhotos";
+import { Context } from "../../../store/Context";
+import { observer } from "mobx-react-lite";
+
+export const PagePagination = observer(() => {
+  const { photosData, getImg } = countryPhotos;
+
+  const { current, setCurrent } = useContext(Context);
+
+  useEffect(() => {
+    getImg();
+    setCurrent(1);
+  }, []);
+
   const onChange = (page) => {
-    console.log(page);
+    getImg({ urlPage: page });
     setCurrent(page);
   };
   return (
@@ -16,7 +28,7 @@ export const PagePagination = () => {
       current={current}
       size="small"
       onChange={onChange}
-      total={50}
+      total={photosData.total_results}
     />
   );
-};
+});

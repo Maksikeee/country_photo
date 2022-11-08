@@ -20,8 +20,12 @@ const LIST_COUNTRIES = gql`
   }
 `;
 
-export const Continents = () => {
+export const Continents = ({ onChange }) => {
   const { data, loading, error } = useQuery(LIST_COUNTRIES, { client });
+
+  const onClick = (e) => {
+    onChange(e.key);
+  };
 
   function getItem(label, key, icon, children, type) {
     return {
@@ -41,13 +45,14 @@ export const Continents = () => {
       continent.name,
       continent.code,
       null,
-      continent.countries.map((country) => getItem(country.name, country.code))
+      continent.countries.map((country) => getItem(country.name, country.name))
     )
   );
 
   return (
     <>
       <Menu
+        onClick={onClick}
         mode="inline"
         style={{
           width: 234,

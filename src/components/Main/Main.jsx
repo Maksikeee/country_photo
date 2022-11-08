@@ -1,13 +1,22 @@
 import { Col, Row } from "antd";
 import { PagePagination } from "./PagePagination/PagePagination";
+import { Context } from "../../store/Context";
+import { useContext } from "react";
+
 import { CountryPhotos } from "./CountryPhotos/CountryPhotos";
 import { Crumb } from "./Crumb/Crumb";
 
 export const Main = () => {
+  const { mainTitle } = useContext(Context);
+
   return (
     <>
-      <h1>Title</h1>
-      <Row wrap={false} justify="space-between">
+      <h2>{mainTitle}</h2>
+      <Row
+        wrap={false}
+        justify="space-between"
+        style={{ padding: "30px 50px" }}
+      >
         <Col className="main" flex="stretch">
           <Crumb />
         </Col>
@@ -16,7 +25,7 @@ export const Main = () => {
         </Col>
       </Row>
 
-      <Row gutter={[8, 8]}>
+      <Row gutter={[8, 0]}>
         <CountryPhotos />
       </Row>
     </>

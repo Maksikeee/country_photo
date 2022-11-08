@@ -1,16 +1,15 @@
-import countryPhotos from "../../../store/CountryPhotos";
+import { countryPhotos } from "../../../store/CountryPhotos";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { Image, Col, Row, Button } from "antd";
+import { Image, Col, Row } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
 
 export const CountryPhotos = observer(() => {
-  const { loading, photosData, loadPhotos } = countryPhotos;
+  const { loading, photosData, getImg } = countryPhotos;
 
   useEffect(() => {
-    loadPhotos();
+    getImg();
   }, []);
-  console.log();
 
   return (
     <>
