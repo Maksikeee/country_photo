@@ -4,3 +4,15 @@
 .ant-pagination-options {
   display: none;
 }
+
+.ant-breadcrumb li {
+  color: #606266;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.ant-breadcrumb li:first-child {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  cursor: default;
+}

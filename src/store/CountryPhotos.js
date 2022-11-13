@@ -6,7 +6,7 @@ class CountryPhotos {
 
   searchFields = {
     urlPage: "1",
-    query: "police",
+    query: "Angola",
   };
 
   constructor() {
@@ -16,6 +16,8 @@ class CountryPhotos {
   }
 
   async getImg(obj) {
+    this.loading = true;
+
     this.searchFields = { ...this.searchFields, ...obj };
 
     const baseURL = `https://api.pexels.com/v1/search/?page=${this.searchFields.urlPage}&per_page=9&query=${this.searchFields.query}`;

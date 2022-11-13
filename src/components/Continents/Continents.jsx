@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Menu } from "antd";
 import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
+import { Context } from "../../store/Context";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   uri: "https://countries.trevorblades.com",
 });
 
-const LIST_COUNTRIES = gql`
-  {
+export const Continents = ({ onChange, searchValue }) => {
+  const [continentsQuery, setContinentsQuery] = useState(`{
     continents {
       name
       code
@@ -17,14 +18,18 @@ const LIST_COUNTRIES = gql`
         code
       }
     }
-  }
-`;
+  }`);
 
-export const Continents = ({ onChange }) => {
+  const { handleBreadCrumb } = useContext(Context);
+
+  const LIST_COUNTRIES = gql`
+    ${continentsQuery}
+  `;
+
   const { data, loading, error } = useQuery(LIST_COUNTRIES, { client });
-
   const onClick = (e) => {
     onChange(e.key);
+    handleBreadCrumb(e.key);
   };
 
   function getItem(label, key, icon, children, type) {
@@ -40,14 +45,64 @@ export const Continents = ({ onChange }) => {
   if (loading || error) {
     return <p>{error ? error.message : "Loading..."}</p>;
   }
-  const items = data.continents.map((continent) =>
-    getItem(
-      continent.name,
-      continent.code,
-      null,
-      continent.countries.map((country) => getItem(country.name, country.name))
-    )
-  );
+
+  // let arr = [];
+
+  // const items =
+  //   searchValue === ""
+  //     ? data.continents.map((continent) => {
+  //         return getItem(
+  //           continent.name,
+  //           continent.code,
+  //           null,
+  //           continent.countries.map((country) => {
+  //             if (country.name.toLowerCase().includes(searchValue)) {
+  //               arr = [...arr, getItem(country.name, country.name)];
+  //               return getItem(country.name, country.name);
+  //             }
+  //           })
+  //         );
+  //       })
+  //     : arr;
+
+  const items = () => {
+    let arr = [];
+    let items = [];
+    if (searchValue === "") {
+      items = data.continents.map((continent) => {
+        return getItem(
+          continent.name,
+          continent.code,
+          null,
+          continent.countries.map((country) => {
+            if (country.name.toLowerCase().includes(searchValue)) {
+              arr = [...arr, getItem(country.name, country.name)];
+              return getItem(country.name, country.name);
+            }
+          })
+        );
+      });
+      return items;
+    } else {
+      data.continents.map((continent) => {
+        return getItem(
+          continent.name,
+          continent.code,
+          null,
+          continent.countries.map((country) => {
+            if (country.name.toLowerCase().includes(searchValue)) {
+              arr = [...arr, getItem(country.name, country.name)];
+              return getItem(country.name, country.name);
+            }
+          })
+        );
+      });
+      return arr;
+    }
+  };
+
+  // console.log(arr);
+  console.log(items());
 
   return (
     <>
@@ -58,7 +113,7 @@ export const Continents = ({ onChange }) => {
           width: 234,
           margin: "0 -24px",
         }}
-        items={items}
+        items={items()}
       />
     </>
   );

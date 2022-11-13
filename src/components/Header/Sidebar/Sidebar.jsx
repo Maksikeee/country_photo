@@ -19,9 +19,12 @@ export const Sidebar = () => {
 
   const { getImg } = countryPhotos;
 
+  const [searchValue, setSearchValue] = useState("");
+
   const onSearch = (value) => {
-    getImg({ query: value, urlPage: 1 });
-    setCurrent(1);
+    // getImg({ query: value, urlPage: 1 });
+    // setCurrent(1);
+    setSearchValue(value.toLowerCase());
   };
 
   const onChange = (searchCountry) => {
@@ -50,7 +53,7 @@ export const Sidebar = () => {
           style={{ marginBottom: "10px" }}
         />
 
-        <Continents onChange={onChange} />
+        <Continents onChange={onChange} searchValue={searchValue} />
       </Drawer>
     </div>
   );
