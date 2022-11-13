@@ -2,6 +2,7 @@ import { Breadcrumb } from "antd";
 import React, { useContext } from "react";
 import { countryPhotos } from "../../../store/CountryPhotos";
 import { Context } from "../../../store/Context";
+import { RightOutlined } from "@ant-design/icons";
 
 export const Crumb = () => {
   const { setCurrent, setMainTitle, breadCrumb, handleBreadCrumb } =
@@ -19,7 +20,7 @@ export const Crumb = () => {
   const breadCrumbView = () => {
     return (
       <div>
-        <Breadcrumb>
+        <Breadcrumb separator={<RightOutlined style={{ fontSize: "14px" }} />}>
           {breadCrumb.map((crumbItem, index) => {
             if (index !== 0) {
               return (

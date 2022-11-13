@@ -10,7 +10,13 @@ export const Header = () => {
             <Sidebar />
           </div>
         </Col>
-        <Col flex="auto" justify="center" align="middle">
+        <Col
+          flex="auto"
+          justify="center"
+          align="middle"
+          style={{ fontWeight: "900", fontSize: "20px" }}
+        >
+          {/* <p className="header__title">Country photos</p> */}
           Country photos
         </Col>
       </Row>

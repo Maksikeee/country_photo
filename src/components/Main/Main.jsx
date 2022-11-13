@@ -10,7 +10,7 @@ export const Main = () => {
   const { mainTitle } = useContext(Context);
 
   return (
-    <>
+    <div className="main">
       <h2>{mainTitle}</h2>
       <Row
         wrap={false}
@@ -28,6 +28,6 @@ export const Main = () => {
       <Row gutter={[8, 0]}>
         <CountryPhotos />
       </Row>
-    </>
+    </div>
   );
 };
