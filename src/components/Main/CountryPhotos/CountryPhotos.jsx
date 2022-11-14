@@ -7,41 +7,56 @@ import { SaveOutlined } from "@ant-design/icons";
 export const CountryPhotos = observer(() => {
   const { loading, photosData, getImg } = countryPhotos;
   const [srcOptions, setSrcOptions] = useState([]);
+  const [imgLink, setImgLink] = useState("original");
 
-  const handleSetSrcOptions = (photo) => {
-    console.log(srcOptions);
-    console.log(photo.src);
-    setSrcOptions({ ...srcOptions, ...photo.src });
-    console.log(srcOptions);
+  function saveImg(blob) {
+    let link = document.createElement("a");
+    link.setAttribute("href", URL.createObjectURL(blob));
+    link.setAttribute("download", `${Date.now()}`);
+    link.click();
+  }
+
+  const handleSetImgLink = (value) => {
+    setImgLink(value);
   };
 
   useEffect(() => {
     getImg();
   }, []);
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const [open, setOpen] = useState(false);
 
-  const showModal = (photo) => {
+  const showModal = (photoData) => {
     setOpen(true);
-    handleSetSrcOptions(photo);
+    console.log(photoData.src);
+
+    handleSetSrcOptions(photoData.src);
+  };
+
+  const handleSetSrcOptions = (photoSrc) => {
+    console.log(photoSrc);
+    setSrcOptions({ ...srcOptions, ...photoSrc });
+    // console.log(srcOptions);
+  };
+
+  const handleChange = (value) => {
+    handleSetImgLink(value);
   };
 
   const handleLoad = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setOpen(false);
-    }, 3000);
+    console.log(srcOptions);
+    console.log(imgLink);
+    console.log(srcOptions[`${imgLink}`]);
+
+    fetch(`${srcOptions[`${imgLink}`]}`)
+      .then((resp) => resp.blob())
+      .then((blob) => saveImg(blob));
+
+    setOpen(false);
   };
 
   const handleCancel = () => {
     setOpen(false);
-  };
-
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
   };
 
   return (
@@ -102,13 +117,7 @@ export const CountryPhotos = observer(() => {
                   <Button key="back" onClick={handleCancel}>
                     Отменить
                   </Button>,
-                  <Button
-                    key="link"
-                    href="https://google.com"
-                    type="primary"
-                    loading={isLoading}
-                    onClick={handleLoad}
-                  >
+                  <Button key="link" type="primary" onClick={handleLoad}>
                     Загрузить
                   </Button>,
                 ]}
