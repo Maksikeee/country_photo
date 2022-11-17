@@ -29,3 +29,67 @@ body {
 .ant-modal-footer {
   text-align: left;
 }
+
+/* ------------------------- */
+#components-layout-demo-custom-trigger .trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#components-layout-demo-custom-trigger .trigger:hover {
+  color: #1890ff;
+}
+
+#components-layout-demo-custom-trigger .logo {
+  height: 32px;
+  margin: 16px;
+  /* background: rgba(255, 255, 255, 0.3); */
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.hidden {
+  visibility: hidden;
+  /* transition: 0.3s; */
+}
+
+.hidden__side {
+  flex: 0 0 0px !important;
+  max-width: 0 !important;
+  min-width: 0 !important;
+}
+
+.side {
+  flex: 1 0 260px !important;
+  max-width: 260px !important;
+  min-width: 260px !important;
+}
+
+section {
+}
+
+.ant-image {
+  display: block;
+}
+
+.ant-layout {
+  background-color: #fff;
+}
+
+.header {
+  padding: 0 15px;
+}
+
+.main {
+  padding: 0 24px;
+}
+
+.app__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}

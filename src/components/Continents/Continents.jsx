@@ -109,10 +109,12 @@ export const Continents = ({ onChange, searchValue }) => {
       <Menu
         onClick={onClick}
         mode="inline"
-        style={{
-          width: 234,
-          margin: "0 -24px",
-        }}
+        style={
+          {
+            // width: 234,
+            // margin: "0 -24px",
+          }
+        }
         items={items()}
       />
     </>

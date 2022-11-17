@@ -64,7 +64,7 @@ export const CountryPhotos = observer(() => {
       {loading && <p>Loading...</p>}
       {!loading &&
         photosData.photos.map((photo) => (
-          <Col flex="stretch">
+          <Col flex="stretch" style={{ width: "33%", marginBottom: "10px" }}>
             <Image
               height={430}
               preview={false}
@@ -72,7 +72,10 @@ export const CountryPhotos = observer(() => {
                 display: "flex",
                 borderRadius: "30px",
                 height: "430px",
-                width: "400px",
+                // minWidth: "315px",
+                // maxWidth: "400px",
+                display: "block",
+                width: "100%",
                 objectFit: "cover",
                 position: "relative",
               }}

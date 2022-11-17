@@ -12,11 +12,7 @@ export const Main = () => {
   return (
     <div className="main">
       <h2>{mainTitle}</h2>
-      <Row
-        wrap={false}
-        justify="space-between"
-        style={{ padding: "30px 50px" }}
-      >
+      <Row wrap={false} justify="space-between" style={{ padding: "30px 0" }}>
         <Col className="main" flex="stretch">
           <Crumb />
         </Col>
@@ -25,7 +21,7 @@ export const Main = () => {
         </Col>
       </Row>
 
-      <Row gutter={[8, 0]}>
+      <Row gutter={[8, 0]} justify="space-between">
         <CountryPhotos />
       </Row>
     </div>
