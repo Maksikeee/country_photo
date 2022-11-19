@@ -9,8 +9,7 @@ import { Context } from "../../../store/Context";
 const { Search } = Input;
 
 export const Sidebar = () => {
-  const { setCurrent, setMainTitle, open, setOpen, showDrawer } =
-    useContext(Context);
+  const { setCurrent, setMainTitle, open } = useContext(Context);
 
   // const [open, setOpen] = useState(false);
 
@@ -36,26 +35,17 @@ export const Sidebar = () => {
 
   return (
     <div className="super">
-      {/* <MenuOutlined onClick={showDrawer} style={{ fontSize: "30px" }} /> */}
       <Drawer
-        // className={open ? "hidden" : ""}
-        // closable={false}
-        // placement="left"
-        // open={open}
-        // onClose={open}
         width="260px"
         style={{
           width: "260px",
           position: "absolute",
           overflow: "hidden",
-          // transition: "all 0",
         }}
         contentWrapperStyle={{ boxShadow: "none" }}
         getContainer=".super"
         mask={false}
-        // height={300}
         placement="left"
-        // onClose={!open}
         open={!open}
         closable={false}
       >

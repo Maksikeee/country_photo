@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Context } from "./store/Context";
 import { Layout } from "antd";
 import "antd/dist/antd.css";
+import "./styles/styles.css";
 
 const { Sider, Content } = Layout;
 
@@ -24,7 +25,6 @@ function App() {
 
   const showDrawer = () => {
     setOpen(!open);
-    console.log(open);
   };
 
   return (

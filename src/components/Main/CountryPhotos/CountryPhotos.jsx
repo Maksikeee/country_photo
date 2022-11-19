@@ -1,7 +1,7 @@
 import { countryPhotos } from "../../../store/CountryPhotos";
 import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
-import { Image, Col, Row, Modal, Button, Select } from "antd";
+import { Image, Col, Row, Modal, Button, Select, Skeleton } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
 
 export const CountryPhotos = observer(() => {
@@ -28,15 +28,12 @@ export const CountryPhotos = observer(() => {
 
   const showModal = (photoData) => {
     setOpen(true);
-    console.log(photoData.src);
 
     handleSetSrcOptions(photoData.src);
   };
 
   const handleSetSrcOptions = (photoSrc) => {
-    console.log(photoSrc);
     setSrcOptions({ ...srcOptions, ...photoSrc });
-    // console.log(srcOptions);
   };
 
   const handleChange = (value) => {
@@ -44,10 +41,6 @@ export const CountryPhotos = observer(() => {
   };
 
   const handleLoad = () => {
-    console.log(srcOptions);
-    console.log(imgLink);
-    console.log(srcOptions[`${imgLink}`]);
-
     fetch(`${srcOptions[`${imgLink}`]}`)
       .then((resp) => resp.blob())
       .then((blob) => saveImg(blob));
@@ -61,16 +54,106 @@ export const CountryPhotos = observer(() => {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
+            <Skeleton.Image active />
+          </Col>
+        </>
+      )}
       {!loading &&
         photosData.photos.map((photo) => (
-          <Col flex="stretch" style={{ width: "33%", marginBottom: "10px" }}>
+          <Col
+            flex="stretch"
+            style={{
+              width: "33%",
+              marginBottom: "10px",
+            }}
+          >
             <Image
               height={430}
-              preview={false}
+              preview={true}
               style={{
                 display: "flex",
-                borderRadius: "30px",
+
                 height: "430px",
                 // minWidth: "315px",
                 // maxWidth: "400px",

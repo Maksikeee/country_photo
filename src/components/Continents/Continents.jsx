@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Menu } from "antd";
+import { Menu, Skeleton } from "antd";
 import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
 import { Context } from "../../store/Context";
 
@@ -9,7 +9,7 @@ const client = new ApolloClient({
 });
 
 export const Continents = ({ onChange, searchValue }) => {
-  const [continentsQuery, setContinentsQuery] = useState(`{
+  const [continentsQuery] = useState(`{
     continents {
       name
       code
@@ -20,16 +20,19 @@ export const Continents = ({ onChange, searchValue }) => {
     }
   }`);
 
-  const { handleBreadCrumb } = useContext(Context);
+  const { handleBreadCrumb, breadCrumb } = useContext(Context);
 
   const LIST_COUNTRIES = gql`
     ${continentsQuery}
   `;
 
   const { data, loading, error } = useQuery(LIST_COUNTRIES, { client });
+
   const onClick = (e) => {
-    onChange(e.key);
-    handleBreadCrumb(e.key);
+    if (breadCrumb[0] !== e.key) {
+      onChange(e.key);
+      handleBreadCrumb(e.key);
+    }
   };
 
   function getItem(label, key, icon, children, type) {
@@ -43,27 +46,22 @@ export const Continents = ({ onChange, searchValue }) => {
   }
 
   if (loading || error) {
-    return <p>{error ? error.message : "Loading..."}</p>;
+    return (
+      <div>
+        {error ? (
+          error.message
+        ) : (
+          <Skeleton
+            active
+            title={false}
+            paragraph={{
+              rows: 7,
+            }}
+          />
+        )}
+      </div>
+    );
   }
-
-  // let arr = [];
-
-  // const items =
-  //   searchValue === ""
-  //     ? data.continents.map((continent) => {
-  //         return getItem(
-  //           continent.name,
-  //           continent.code,
-  //           null,
-  //           continent.countries.map((country) => {
-  //             if (country.name.toLowerCase().includes(searchValue)) {
-  //               arr = [...arr, getItem(country.name, country.name)];
-  //               return getItem(country.name, country.name);
-  //             }
-  //           })
-  //         );
-  //       })
-  //     : arr;
 
   const items = () => {
     let arr = [];
@@ -101,22 +99,9 @@ export const Continents = ({ onChange, searchValue }) => {
     }
   };
 
-  // console.log(arr);
-  console.log(items());
-
   return (
     <>
-      <Menu
-        onClick={onClick}
-        mode="inline"
-        style={
-          {
-            // width: 234,
-            // margin: "0 -24px",
-          }
-        }
-        items={items()}
-      />
+      <Menu onClick={onClick} mode="inline" items={items()} />
     </>
   );
 };

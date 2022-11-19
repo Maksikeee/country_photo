@@ -75,6 +75,8 @@ section {
 
 .ant-image {
   display: block;
+  overflow: hidden;
+  border-radius: 30px;
 }
 
 .ant-layout {
@@ -92,4 +94,14 @@ section {
 .app__container {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.ant-skeleton {
+  width: 100%;
+}
+
+.ant-skeleton-image {
+  border-radius: 30px;
+  width: 100% !important;
+  height: 430px !important;
 }

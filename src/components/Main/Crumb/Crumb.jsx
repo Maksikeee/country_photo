@@ -11,10 +11,12 @@ export const Crumb = () => {
   const { getImg } = countryPhotos;
 
   const onClick = (searchCountry) => {
-    getImg({ query: searchCountry.target.textContent, urlPage: 1 });
-    setMainTitle(searchCountry.target.textContent);
-    setCurrent(1);
-    handleBreadCrumb(searchCountry.target.textContent);
+    if (breadCrumb[0] !== searchCountry.target.textContent) {
+      getImg({ query: searchCountry.target.textContent, urlPage: 1 });
+      setMainTitle(searchCountry.target.textContent);
+      setCurrent(1);
+      handleBreadCrumb(searchCountry.target.textContent);
+    }
   };
 
   const breadCrumbView = () => {
