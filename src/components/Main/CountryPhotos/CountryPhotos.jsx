@@ -57,91 +57,101 @@ export const CountryPhotos = observer(() => {
       {loading && (
         <>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
               marginBottom: "10px",
             }}
           >
-            <Skeleton.Image active />
+            <Skeleton.Image className="ant-image" active />
           </Col>
         </>
       )}
       {!loading &&
         photosData.photos.map((photo) => (
           <Col
+            className="image-row"
             flex="stretch"
             style={{
               width: "33%",
@@ -155,8 +165,6 @@ export const CountryPhotos = observer(() => {
                 display: "flex",
 
                 height: "430px",
-                // minWidth: "315px",
-                // maxWidth: "400px",
                 display: "block",
                 width: "100%",
                 objectFit: "cover",
@@ -167,6 +175,7 @@ export const CountryPhotos = observer(() => {
 
             <Row
               justify="space-between"
+              className="image__description"
               style={{
                 alignItems: "center",
                 width: "100%",
@@ -176,7 +185,10 @@ export const CountryPhotos = observer(() => {
                 padding: "0 30px",
               }}
             >
-              <p style={{ margin: "0", fontWeight: "500" }}>
+              <p
+                className="image__photographer"
+                style={{ margin: "0", fontWeight: "500" }}
+              >
                 {photo.photographer}
               </p>
               <button

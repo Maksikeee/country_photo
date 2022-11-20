@@ -105,3 +105,16 @@ section {
   width: 100% !important;
   height: 430px !important;
 }
+
+.image__photographer {
+  margin-right: 10px !important;
+}
+
+.image__description {
+  flex-wrap: nowrap;
+}
+
+.ant-pagination {
+  max-width: 260px;
+  width: auto !important;
+}

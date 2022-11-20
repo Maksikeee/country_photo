@@ -1,0 +1,154 @@
+@media (max-width: 1040px) {
+  .image-row {
+    width: 50% !important;
+  }
+  .ant-image {
+    height: 400px !important;
+  }
+
+  .ant-image-img {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 805px) {
+  .ant-drawer-body {
+    padding: 20px 12px;
+  }
+  .main {
+    padding: 0 12px;
+  }
+  .ant-input,
+  .ant-input-search-button {
+    height: 30px;
+  }
+  .ant-menu,
+  .ant-input,
+  .image__photographer {
+    font-size: 12px;
+  }
+  .image-row {
+    width: 33% !important;
+  }
+  .ant-image {
+    height: 280px !important;
+  }
+
+  .ant-image-img {
+    height: 280px !important;
+  }
+
+  .side {
+    flex: 1 0 200px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
+  }
+
+  .ant-drawer-content-wrapper {
+    width: 200px !important;
+  }
+
+  .main h2 {
+    font-size: 30px;
+  }
+
+  .main__top {
+    padding: 4px 0 14px !important;
+  }
+}
+
+@media (max-width: 750px) {
+  .ant-image {
+    height: 250px !important;
+  }
+
+  .ant-image-img {
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .ant-image {
+    height: 230px !important;
+  }
+
+  .ant-image-img {
+    height: 230px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .main h2 {
+    font-size: 26px;
+  }
+  .image-area {
+    justify-content: space-around;
+  }
+  .image-row {
+    width: 50% !important;
+  }
+  .ant-image {
+    height: 330px !important;
+  }
+
+  .ant-image-img {
+    height: 330px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .main__top {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main__crumbs {
+    margin-bottom: 12px;
+  }
+
+  .main h2 {
+    font-size: 24px;
+  }
+  .image-area {
+    justify-content: space-around;
+  }
+  .image-row {
+    max-width: 400px;
+    width: 100% !important;
+  }
+
+  .ant-image {
+    height: 360px !important;
+  }
+
+  .ant-image-img {
+    height: 360px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .image-row {
+    max-width: 370px;
+  }
+
+  .ant-image {
+    height: 360px !important;
+  }
+
+  .ant-image-img {
+    height: 360px !important;
+  }
+}
+
+@media (max-width: 410px) {
+  .image-row {
+    max-width: 280px;
+  }
+
+  .ant-image {
+    height: 300px !important;
+  }
+
+  .ant-image-img {
+    height: 300px !important;
+  }
+}

@@ -38,7 +38,7 @@ export const Sidebar = () => {
       <Drawer
         width="260px"
         style={{
-          width: "260px",
+          // width: "260px",
           position: "absolute",
           overflow: "hidden",
         }}
