@@ -157,13 +157,12 @@ export const CountryPhotos = observer(() => {
               width: "33%",
               marginBottom: "10px",
             }}
+            key={photo.id}
           >
             <Image
               height={430}
               preview={true}
               style={{
-                display: "flex",
-
                 height: "430px",
                 display: "block",
                 width: "100%",

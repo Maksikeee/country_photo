@@ -5,17 +5,17 @@ import { Context } from "../../../store/Context";
 import { RightOutlined } from "@ant-design/icons";
 
 export const Crumb = () => {
-  const { setCurrent, setMainTitle, breadCrumb, handleBreadCrumb } =
-    useContext(Context);
+  // const { breadCrumb, handleBreadCrumb } = useContext(Context);
 
-  const { getImg } = countryPhotos;
+  const { getImg, setMainTitle, setCurrent, breadCrumb, setBeadCrumb } =
+    countryPhotos;
 
   const onClick = (searchCountry) => {
     if (breadCrumb[0] !== searchCountry.target.textContent) {
       getImg({ query: searchCountry.target.textContent, urlPage: 1 });
       setMainTitle(searchCountry.target.textContent);
       setCurrent(1);
-      handleBreadCrumb(searchCountry.target.textContent);
+      setBeadCrumb(searchCountry.target.textContent);
     }
   };
 
@@ -42,43 +42,8 @@ export const Crumb = () => {
             }
           })}
         </Breadcrumb>
-        {/* <Breadcrumb>
-          {pathnames.length > 0 ? (
-            <Breadcrumb.Item>
-              <Link to="/">Home</Link>
-            </Breadcrumb.Item>
-          ) : (
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-          )}
-          {pathnames.map((name, index) => {
-            const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-            const isLast = index === pathnames.length - 1;
-            return isLast ? (
-              <Breadcrumb.Item>{name}</Breadcrumb.Item>
-            ) : (
-              <Breadcrumb.Item>
-                <Link onClick={onClick} to={`${routeTo}`}>
-                  {name}
-                </Link>
-              </Breadcrumb.Item>
-            );
-          })}
-        </Breadcrumb> */}
       </div>
     );
   };
-  return (
-    // <Breadcrumb separator={<RightOutlined style={{ fontSize: "14px" }} />}>
-    //   <Breadcrumb.Item>Home</Breadcrumb.Item>
-    //   <Breadcrumb.Item>
-    //     <a href="">Application Center</a>
-    //   </Breadcrumb.Item>
-    //   <Breadcrumb.Item>
-    //     <a href="">Application List</a>
-    //   </Breadcrumb.Item>
-    //   <Breadcrumb.Item>An Application</Breadcrumb.Item>
-    // </Breadcrumb>
-
-    <>{breadCrumbView()}</>
-  );
+  return <>{breadCrumbView()}</>;
 };

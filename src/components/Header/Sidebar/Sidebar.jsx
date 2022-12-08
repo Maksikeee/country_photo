@@ -1,29 +1,16 @@
-import { Input, Drawer, Menu } from "antd";
+import { Input, Drawer } from "antd";
 import React, { useState, useContext } from "react";
-import { MenuOutlined } from "@ant-design/icons";
 import { Continents } from "../../Continents/Continents";
 import { countryPhotos } from "../../../store/CountryPhotos";
-
-import { Context } from "../../../store/Context";
 
 const { Search } = Input;
 
 export const Sidebar = () => {
-  const { setCurrent, setMainTitle, open } = useContext(Context);
-
-  // const [open, setOpen] = useState(false);
-
-  // const showDrawer = () => {
-  //   setOpen(!open);
-  // };
-
-  const { getImg } = countryPhotos;
+  const { getImg, open, setMainTitle, setCurrent } = countryPhotos;
 
   const [searchValue, setSearchValue] = useState("");
 
   const onSearch = (value) => {
-    // getImg({ query: value, urlPage: 1 });
-    // setCurrent(1);
     setSearchValue(value.toLowerCase());
   };
 
@@ -38,7 +25,6 @@ export const Sidebar = () => {
       <Drawer
         width="260px"
         style={{
-          // width: "260px",
           position: "absolute",
           overflow: "hidden",
         }}

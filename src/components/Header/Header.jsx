@@ -1,11 +1,10 @@
 import { Col, Row, Divider } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import React, { useContext } from "react";
-
-import { Context } from "../../store/Context";
+import React from "react";
+import { countryPhotos } from "../../store/CountryPhotos";
 
 export const Header = () => {
-  const { open, showDrawer } = useContext(Context);
+  const { open, showDrawer } = countryPhotos;
 
   return (
     <div className="header">

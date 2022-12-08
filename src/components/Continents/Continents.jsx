@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Menu, Skeleton } from "antd";
 import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
 import { Context } from "../../store/Context";
+import { countryPhotos } from "../../store/CountryPhotos";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -20,7 +21,8 @@ export const Continents = ({ onChange, searchValue }) => {
     }
   }`);
 
-  const { handleBreadCrumb, breadCrumb } = useContext(Context);
+  // const { handleBreadCrumb, breadCrumb } = useContext(Context);
+  const { breadCrumb, setBeadCrumb } = countryPhotos;
 
   const LIST_COUNTRIES = gql`
     ${continentsQuery}
@@ -31,7 +33,7 @@ export const Continents = ({ onChange, searchValue }) => {
   const onClick = (e) => {
     if (breadCrumb[0] !== e.key) {
       onChange(e.key);
-      handleBreadCrumb(e.key);
+      setBeadCrumb(e.key);
     }
   };
 

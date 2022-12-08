@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 
 class CountryPhotos {
   loading = true;
@@ -25,17 +25,46 @@ class CountryPhotos {
   }
 
   async loadPhotos(baseURL) {
-    const response = await fetch(baseURL, {
+    fetch(baseURL, {
       method: "GET",
       headers: {
         Accept: "application/json",
         Authorization:
           "563492ad6f917000010000017bebf3a461ef4a8aa29c664153802a43",
       },
-    });
+    })
+      .then((response) => response.json())
+      .then((data) =>
+        runInAction(() => {
+          this.photosData = data;
+          this.loading = false;
+        })
+      );
+  }
 
-    this.photosData = await response.json();
-    this.loading = false;
+  open = true;
+  showDrawer() {
+    this.open = !this.open;
+  }
+
+  mainTitle = "Angola";
+  setMainTitle(searchCountry) {
+    this.mainTitle = searchCountry;
+  }
+
+  current = "1";
+  setCurrent(page) {
+    this.current = page;
+  }
+
+  breadCrumb = [this.mainTitle];
+  setBeadCrumb(historyValue) {
+    if (this.breadCrumb.length >= 5) {
+      this.breadCrumb.pop();
+      this.breadCrumb = [historyValue, ...this.breadCrumb];
+    } else {
+      this.breadCrumb = [historyValue, ...this.breadCrumb];
+    }
   }
 }
 

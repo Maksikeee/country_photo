@@ -5,9 +5,9 @@ import { Context } from "../../../store/Context";
 import { observer } from "mobx-react-lite";
 
 export const PagePagination = observer(() => {
-  const { photosData, getImg } = countryPhotos;
+  const { photosData, getImg, current, setCurrent } = countryPhotos;
 
-  const { current, setCurrent } = useContext(Context);
+  // const { current, setCurrent } = useContext(Context);
 
   useEffect(() => {
     getImg();

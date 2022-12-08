@@ -1,13 +1,12 @@
 import { Col, Row } from "antd";
 import { PagePagination } from "./PagePagination/PagePagination";
-import { Context } from "../../store/Context";
-import { useContext } from "react";
+import { countryPhotos } from "../../store/CountryPhotos";
 
 import { CountryPhotos } from "./CountryPhotos/CountryPhotos";
 import { Crumb } from "./Crumb/Crumb";
 
 export const Main = () => {
-  const { mainTitle } = useContext(Context);
+  const { mainTitle } = countryPhotos;
 
   return (
     <div className="main">
